@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+  </head>
+  <body>
+    <h2>Helo home</h2>
+    <ul>
+      {% for todo in todos %}
+      <li>
+        {{ todo.desc }} with title {{ todo.title }}
+        <span
+          ><a
+            href="{% url 'delete-todo' todo.id %}"
+            onclick="return confirm('Are you sure you want to delete this?')"
+            >Delete this</a
+          ></span
+        >
+        <span><a href="{% url 'update-todo' todo.id %}">Update this</a></span>
+      </li>
+      <hr />
+      {% endfor %}
+    </ul>
+    <a href="{% url 'add-todo' %}">Add New</a>
+  </body>
+</html>
